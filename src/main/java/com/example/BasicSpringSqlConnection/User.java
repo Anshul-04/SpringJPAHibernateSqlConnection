@@ -1,5 +1,6 @@
 package com.example.BasicSpringSqlConnection;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -11,7 +12,14 @@ public class User {
     private int id;   //It is the primary key in table
     private String name;
     private  int age;
+
     private int mobileNumber;
+
+    @Column(name = "country_name")  //by this we can modify attributes and column name in sql table will be different from attribute name in Entity
+    private String country;
+
+    @Column(unique = true)  //So our data in sql table will remain unique,it is to avoid duplicate value
+    private String email;
 
 
     //Always create the default constructor
@@ -56,5 +64,22 @@ public class User {
 
     public void setMobileNumber(int mobileNumber) {
         this.mobileNumber = mobileNumber;
+    }
+
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
